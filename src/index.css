@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* SARVADA design system. All colours HSL. Provisional brand tokens. */
+@layer base {
+  :root {
+    --background: 45 39% 94%;        /* warm ivory */
+    --foreground: 142 15% 15%;       /* charcoal green */
+    --card: 45 39% 96%;
+    --card-foreground: 142 15% 15%;
+    --popover: 45 39% 96%;
+    --popover-foreground: 142 15% 15%;
+    --primary: 150 100% 20%;         /* botanical green */
+    --primary-foreground: 45 39% 96%;
+    --secondary: 85 22% 89%;         /* pale sage */
+    --secondary-foreground: 142 15% 15%;
+    --muted: 85 22% 89%;
+    --muted-foreground: 50 6% 40%;   /* muted stone */
+    --accent: 85 22% 89%;
+    --accent-foreground: 158 54% 15%;
+    --destructive: 4 60% 42%;
+    --destructive-foreground: 45 39% 96%;
+    --border: 60 10% 80%;
+    --input: 60 10% 75%;
+    --ring: 150 100% 20%;
+    --radius: 0.125rem;
+
+    --forest: 158 54% 15%;           /* deep forest */
+    --forest-foreground: 45 39% 94%;
+    --gold: 43 38% 53%;
+    --lime: 77 42% 50%;
+    --stone: 50 6% 42%;
+    --ivory: 45 39% 94%;
+
+    --scrim: linear-gradient(180deg, hsl(158 54% 8% / 0.45) 0%, hsl(158 54% 8% / 0) 30%, hsl(158 54% 8% / 0.15) 55%, hsl(158 54% 6% / 0.7) 100%);
+    --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+  h1, h2, h3, h4 { @apply font-display font-light; letter-spacing: -0.015em; line-height: 1.02; }
+  :focus-visible { outline: 2px solid hsl(var(--gold)); outline-offset: 3px; }
+  ::selection { background: hsl(var(--secondary)); color: hsl(var(--forest)); }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+}
+
+@layer utilities {
+  .wrap { @apply mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-16 xl:px-[88px]; }
+  .label { @apply font-sans text-[11px] font-medium uppercase tracking-[0.18em]; }
+  .measure { max-width: 62ch; }
+  .t-hero { font-size: clamp(2.45rem, 8vw, 7.25rem); line-height: 0.98; }
+  .t-xl { font-size: clamp(2.5rem, 5.6vw, 5.25rem); line-height: 1; }
+  .t-lg { font-size: clamp(2rem, 3.8vw, 3.5rem); line-height: 1.05; }
+  .t-md { font-size: clamp(1.5rem, 2.4vw, 2.25rem); line-height: 1.15; }
+  .bg-scrim { background: var(--scrim); }
+  .ease-calm { transition-timing-function: var(--ease-calm); }
+}
